@@ -1,5 +1,29 @@
 package com.minse0.spring.ex.database;
 
-public class UsedGoodsController {
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.minse0.spring.ex.database.domain.UsedGoods;
+import com.minse0.spring.ex.database.service.UsedGoodsService;
+
+// request repsonse 관련 처리
+@Controller
+public class UsedGoodsController {
+	
+	@Autowired
+	private UsedGoodsService usedGoodsService;
+	// 중고 게시글 모든 정보를 response 담는 페이지
+	@ResponseBody
+	@RequestMapping("/db/usedgoods/list")
+	public List<UsedGoods> usedGoodsList() {
+		
+		// 중고 게시글의 모든 정보 얻어오기
+		List<UsedGoods> usedGoodsList = usedGoodsService.getUsedGoodsList();
+		
+		return usedGoodsList;
+	}
 }
