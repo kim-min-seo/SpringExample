@@ -16,7 +16,7 @@ public class ReviewController {
 	private ReviewService reviewService;
 	// 전달받은 id와 일치하는 리뷰 정보를 responese에 json에 담는다
 	@ResponseBody
-    @RequestMapping("/mybatis/review")
+    @RequestMapping("/mybatis/review/select/1")
 	public Review review(@RequestParam("id") int id) {
 //    	String idString = request.getParameter("id");
 //    	int id = Integer.parseInt(idString);
