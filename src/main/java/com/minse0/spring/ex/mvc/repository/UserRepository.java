@@ -12,4 +12,3 @@ public interface UserRepository {
 	
 	public int insertUser(User user);
 }
-s

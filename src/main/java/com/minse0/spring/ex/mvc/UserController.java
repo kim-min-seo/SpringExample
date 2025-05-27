@@ -48,7 +48,7 @@ public class UserController {
 		return "mvc/UserInfo";
 	}
 	
-	@GetMapping("/input")ss
+	@GetMapping("/input")
 	public String userInput() {
 		return "mvc/userInput";
 	}
