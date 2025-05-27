@@ -21,4 +21,23 @@
 		LIMIT
 			1			
 	</select>
+	
+	<insert id="insetUser" useGeneratedKeys="true" keyProperty="id"
+	 parameterType="com.minseo0.spring.ex.mvc.domian.User">
+		INSERT INTO
+				`new_user`
+		(		
+			, `name`
+			, `yyyymmdd`
+			, `email`
+			, `introduce`
+		)
+		VALUE
+		(
+			#{name}
+			, #{yyyymmdd)
+			, #{email}
+			, #{introduce}
+		)	
+	</insert>
  </mapper>

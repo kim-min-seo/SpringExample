@@ -17,4 +17,11 @@ public class UserService {
 		
 		return user;
 	}
+	
+	public int addUser(
+		User user	) {
+		int count = userRepository.insertUser(user);
+		
+		return count;
+	}
 }
