@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>날짜, 문자열 다루기</title>
+</head>
+<body>
+	<h2>날짜, 문자열 다루기</h2>
+
+	<h3>1. 날짜 시간 객체</h3>
+
+	<h4 th:text="|Date : ${date}|">Date 출력</h4>
+	<h4 th:text="|localDate : ${localDate}|">LocalDate 출력</h4>
+	<h4 th:text="|localDateTime : ${localDateTime}|">LocalDateTime 출력</h4>
+
+	<!-- 날짜 포맷팅 -->
+	<h4 th:text="|Date : ${#dates.format(date, 'yyyy년 M월 d일 H시 m분 s초')}|">Date 포맷</h4>
+	<h4 th:text="|localDate : ${#temporals.format(localDate, 'yyyy년 MM월 dd일')}|">LocalDate 포맷</h4>
+	<h4 th:text="|LocalDateTime : ${#temporals.format(localDateTime, 'yyyy/MM/dd HH:mm:ss')}|">LocalDateTime 포맷</h4>
+
+	<h3>2. 문자열 메소드</h3>
+	<div th:with="string1='No pain. No gain'">
+		<h4 th:text="|문자열 길이 : ${#strings.length(string1)}|"></h4>
+
+		<!-- contains는 SpEL 사용 가능 -->
+		<h4 th:text="|No가 존재하는지 : ${string1.contains('No')}|"></h4>
+
+		<!-- 올바른 변수명과 메소드 이름 사용 -->
+		<h4 th:if="${string1.startsWith('No')}">No로 시작한다</h4>
+		<h4 th:if="${string1.endsWith('gain')}">gain으로 끝난다</h4>
+	</div>
+
+	<div th:with="string2='I Love chicken'">
+		<h4>문자열 치환</h4>
+		<h4 th:text="${#strings.replace(string2, 'chicken', 'pizza')}"></h4>
+		<h4 th:text="${string2}"></h4>
+
+		<h4>문자열 자르기</h4>
+		<h4 th:text="${#strings.substring(string2, 2, 6)}"></h4>
+
+		<h4>문자열 쪼개기</h4>
+		<!-- 공백 기준으로 쪼개고 배열 인덱스로 접근 -->
+		<h4 th:text="${#strings.arraySplit(string2, ' ')[0]}"></h4>
+		<h4 th:text="${#strings.arraySplit(string2, ' ')[2]}"></h4>
+		
+		<div th:with="string3 = '                  hello             '">
+			<h4 th:text="${string3}"></h4>
+			<textarea th:text="${string3}"></textarea>
+			<textarea th:text=${#strings.trim(strings)}></textarea>
+		</div>
+	</div>
+</body>
+</html>
