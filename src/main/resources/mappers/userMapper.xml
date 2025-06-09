@@ -22,17 +22,17 @@
 			1			
 	</select>
 	
-	<insert id="insetUser" useGeneratedKeys="true" keyProperty="id"
+	<insert id="insertUser" useGeneratedKeys="true" keyProperty="id"
 	 parameterType="com.minse0.spring.ex.mvc.domain.User">
 		INSERT INTO
 				`new_user`
 		(		
-			, `name`
+			 `name`
 			, `yyyymmdd`
 			, `email`
 			, `introduce`
 		)
-		VALUE
+		VALUES
 		(
 			#{name}
 			, #{yyyymmdd}
