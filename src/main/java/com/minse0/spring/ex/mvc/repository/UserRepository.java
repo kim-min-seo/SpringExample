@@ -11,4 +11,7 @@ public interface UserRepository {
 	public User selectLastUser();
 	
 	public int insertUser(User user);
+	
+	// 전달 받은 email이 포함된 행의 개수
+	public int selectCountryByEmail(@Param("email") String email);
 }

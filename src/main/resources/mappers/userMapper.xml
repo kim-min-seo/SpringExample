@@ -40,4 +40,31 @@
 			, #{introduce}
 		)	
 	</insert>
+	
+	<select id="slelectCountByEmail" parameterType="string">
+		SELECT
+			count(*)
+		FROM
+			`new_user`
+		WHERE
+			`email` = #{email}
+					
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
  </mapper>
