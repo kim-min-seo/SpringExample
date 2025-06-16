@@ -29,7 +29,7 @@ public class StudentService {
 		return result;
 	}
 	
-	public updateStudent(int id, String dreamJob) {
+	public Student updateStudent(int id, String dreamJob) {
 		
 		// 수정대상 행 조회
 		// 조회 결과 객체 얻어 오기
@@ -45,13 +45,32 @@ public class StudentService {
 	Optional<Student> optionalStudent = studentRepository.findById(id);
 	
 	if(optionalStudent.isPresent()) {
-			// null이 아니다
+		// null이 아니다
 		Student student = optionalStudent.get();
+		
+		student = student.toBuilder().dreamJob(dreamJob).build();
+		
+		Student result = studentRepository.save(student);
+		
+		return result;
+		
 	} else {
 		// null이다
+		return null;
+	  }
+	
 	}
-	
-	
+	public void deleteStudent(int id) {
+		// 삭제 대상 행을 조회 한다.
+		// 조회된 행을 삭제 한다.
+		
+		Optional<Student> optionalStudent = studentRepository.findById(id);
+		
+		if(optionalStudent.isPresent()) {
+			Student student = optionalStudent.get();
+			studentRepository.delete(student);
+		}
+		
 	}
 	
 	
