@@ -1,5 +1,6 @@
 package com.minse0.spring.ex.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,9 +64,16 @@ public class StudentController {
 		List<Student> studentList = null;
 		
 		//studentList = studentRepository.findAllByOrderByIdDesc();
+		//studentList = studentRepository.findTop2ByOrderByIdDesc();
+		//studentList = studentRepository.findByName("김인규");
 		
-		studentList = studentRepository.findTop2ByOrderByIdDesc();
+//		List<String> nameList = new ArrayList<>();
+//		nameList.add("유재석");
+//		nameList.add("김인규");
+//		studentList = studentRepository.findByNameIn(nameList);
 		
+	//	studentList = studentRepository.findByEmailContaining("gmail");
+		studentList = studentRepository.selectByQuery("개발자");
 		return studentList;
 	}
 	
